@@ -1,0 +1,71 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "yield",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-06-30",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".open-next/assets"
+	},
+	"images": {
+		// Enable image optimization
+		// see https://opennext.js.org/cloudflare/howtos/image
+		"binding": "IMAGES"
+	},
+	"services": [
+		{
+			// Self-reference service binding, the service name must match the worker name
+			// see https://opennext.js.org/cloudflare/caching
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "yield"
+		}
+	],
+	"observability": {
+		"enabled": true
+	},
+	"upload_source_maps": true,
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "yield",
+			// 运行 `wrangler d1 create yield` 后把返回的 id 填进来；用「Deploy to Cloudflare」按钮会自动创建并注入。
+			"database_id": "68c060ef-b5be-4059-a01f-8a798afb8604",
+			"migrations_dir": "migrations"
+		}
+	],
+	"vars": {
+		// Web Push VAPID 公钥 + subject。请换成你自己的（见 README「Web Push」生成）。私钥用 `wrangler secret put VAPID_PRIVATE_KEY`。
+		"VAPID_PUBLIC_KEY": "BPslLCPlWbB34A9_gsuY9YEQ8zt6W-Y-biOg9AXrJQSnrSK6qNsyZHYb9T6-hEjBzUtdxlFSsO_q2sgD-U1oi00",
+		"VAPID_SUBJECT": "mailto:you@example.com"
+	}
+	/**
+	 * Smart Placement
+	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+	 */
+	// "placement": {  "mode": "smart" }
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+	/**
+	 * Environment Variables
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+	// "vars": {  "MY_VARIABLE": "production_value" }
+}
