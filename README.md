@@ -21,6 +21,26 @@ Built on Next.js 16 + Cloudflare Workers (via OpenNext) + D1.
   <img src="public/dashboard-light_en.png" alt="Yield dashboard" width="900" />
 </p>
 
+## Apolu — the native client
+
+<p align="center">
+  <a href="https://apolu.app"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download Apolu on the App Store" height="48" /></a>
+</p>
+
+Yield is the self-hosted console. **[Apolu](https://apolu.app)** is the finished client version of the same idea, now on the App Store — a native app for iPhone, iPad, Mac and Apple Watch, no server of your own required.
+
+- **Rankings** — Top Free / Top Paid across 175 storefronts, tracked separately for iPhone, iPad and Mac. Hourly refresh in major markets, at least every 4 hours elsewhere.
+- **Alerts** — push when an app enters the Top 10, charts in a new country, or jumps a significant number of places. Not a daily digest.
+- **Reviews** — one inbox across all your apps, worst ratings first, with replies sent from the app.
+- **Revenue** — purchases, renewals and refunds as they happen, plus real downloads and proceeds by country from your own App Store Connect sales reports; home-screen widgets included.
+- **Share cards** — turn a milestone into an image or a short video, in any of the languages the app speaks.
+
+Tracking apps and the Top 25 of any chart is free; **PRO** ($6.99/month, $39.99/year with a 7-day trial, or $79.99 lifetime) unlocks the full Top 100, every category, ranking history, alerts, reviews and revenue. Requires iOS 18.0+ / macOS 15.6+; universal purchase across Apple platforms.
+
+Ranking data needs no account at all. Reviews and revenue use an App Store Connect API key you create yourself — encrypted before storage, never written in plaintext, and revocable from App Store Connect at any time.
+
+> Different plumbing, same job: Apolu reads the App Store Connect API and sales reports, while Yield ingests App Store Server Notifications V2 on a Cloudflare Worker you own. This repo stays open source and self-hosted.
+
 ## Features
 
 - **Overview** — KPI cards + charts (orders, revenue via FX, active subscriptions, refund rate), with environment (All / Production / Sandbox) and 7-day / 30-day range switchers.

@@ -21,6 +21,26 @@ Yield 是一个可自托管的 **App Store Connect（ASC）订单管理控制台
   <img src="public/dashboard-light_zh-Hans.png" alt="Yield 仪表盘" width="900" />
 </p>
 
+## Apolu — 客户端版本
+
+<p align="center">
+  <a href="https://apolu.app"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="在 App Store 下载 Apolu" height="48" /></a>
+</p>
+
+Yield 是自托管的控制台，**[Apolu](https://apolu.app)** 则是同一件事做完整之后的客户端版本，现已上架 App Store——iPhone、iPad、Mac 与 Apple Watch 原生应用，不需要自己跑服务。
+
+- **排名** — 175 个国家/地区的免费榜与付费榜，iPhone、iPad、Mac 分别跟踪。主要市场每小时刷新，其余至少每 4 小时一次。
+- **提醒** — 进入 Top 10、在新国家上榜、名次大幅跳动时推送，而不是每日摘要。
+- **评论** — 所有 app 的新评论汇总到一个收件箱，低分优先，可直接在应用内回复。
+- **收入** — 内购、续订与退款实时到达；并按国家展示来自你自己 App Store Connect 销售报告的真实下载量与收入，含桌面小组件。
+- **分享卡片** — 把里程碑做成图片或短视频，支持应用内的所有语言。
+
+跟踪 app 与查看任意榜单前 25 名免费；**PRO**（$6.99/月、$39.99/年含 7 天试用，或 $79.99 买断）解锁完整 Top 100、全部分类、排名历史、提醒、评论与收入。需要 iOS 18.0+ / macOS 15.6+，Apple 全平台通用购买。
+
+排名数据完全不需要账号。评论与收入使用你自己创建的 App Store Connect API Key——入库前加密、不以明文保存，随时可在 App Store Connect 撤销。
+
+> 管道不同，做的事一样：Apolu 走 App Store Connect API 与销售报告，Yield 则在你自己的 Cloudflare Worker 上接收 App Store Server Notifications V2。本仓库继续保持开源与自托管。
+
 ## 功能
 
 - **总览** — KPI 卡片 + 图表（订单数、按汇率折算的金额、活跃订阅、退款率），带环境（全部 / Production / Sandbox）与 7 天 / 30 天切换。
