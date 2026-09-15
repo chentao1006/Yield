@@ -77,7 +77,9 @@ const ORDER_SELECT = `t.transaction_id, t.original_transaction_id, t.product_id,
         t.notification_type, t.environment, s.status AS sub_status`;
 
 function buildWhere(q: OrderQuery): { sql: string; params: unknown[] } {
-	const clauses: string[] = [];
+	// 家庭共享：同一笔购买会给每个共享成员各生成一行交易，只有 PURCHASED 那一行是实付订单，
+	// 其余 FAMILY_SHARED 行是免费的共享副本，不应作为独立订单出现在列表里。
+	const clauses: string[] = ["(t.in_app_ownership_type IS NULL OR t.in_app_ownership_type != 'FAMILY_SHARED')"];
 	const params: unknown[] = [];
 	if (q.type) {
 		clauses.push("t.type = ?");
