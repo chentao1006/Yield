@@ -176,8 +176,7 @@ export async function notifyEvent(
 	settings: AppSettings,
 	productMap: Map<string, string>,
 ): Promise<void> {
-	// 家庭共享：同一事件会给每个共享成员各发一次通知，只有 PURCHASED 那份对应真实购买方，
-	// 其余 FAMILY_SHARED 份是重复噪音。DB 记录仍照常写入（用于账目/审计），只是不推送。
+	// 家庭共享一笔购买会触发多条 webhook（每个共享成员一份），照单全推等于重复提醒；跳过即可，DB 照常入账。
 	if (decoded.transaction?.inAppOwnershipType === "FAMILY_SHARED") return;
 
 	const appAppleId = decoded.payload.data?.appAppleId ?? decoded.payload.summary?.appAppleId;
